@@ -24,7 +24,7 @@ import org.jboss.errai.codegen.framework.meta.MetaClass;
 public abstract class UnsatisfiedDependency {
   private MetaClass enclosingType;
   protected MetaClass injectedType;
-  
+
   public UnsatisfiedDependency(MetaClass enclosingType, MetaClass injectedType) {
     this.enclosingType = enclosingType;
     this.injectedType = injectedType;

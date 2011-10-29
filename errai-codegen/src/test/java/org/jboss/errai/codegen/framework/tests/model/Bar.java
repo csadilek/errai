@@ -5,8 +5,8 @@ package org.jboss.errai.codegen.framework.tests.model;
  */
 public abstract class Bar {
   protected String name;
-  
+
   public void setName(String name) {
-    
+
   }
 }

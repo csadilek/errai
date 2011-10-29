@@ -23,14 +23,14 @@ import java.util.List;
  */
 public class UnsatisfiedDependenciesException extends RuntimeException {
   private static final long serialVersionUID = 1L;
-  
+
   private UnsatisfiedDependencies unsatisfiedDependencies;
-  
+
   public UnsatisfiedDependenciesException(UnsatisfiedDependencies unsatisfiedDependencies) {
     super(unsatisfiedDependencies.toString());
     this.unsatisfiedDependencies = unsatisfiedDependencies;
-  } 
-  
+  }
+
   public List<UnsatisfiedDependency> getUnsatisfiedDependencies() {
     return unsatisfiedDependencies.get();
   }

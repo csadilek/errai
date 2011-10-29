@@ -52,7 +52,7 @@ public class PooledExecutorService implements TaskProvider {
    * Enumeration of possible ways of handling a queue full scenario.
    */
   public enum SaturationPolicy {
-    
+
     /**
      * Runs the task in the calling thread.
      */
@@ -62,7 +62,7 @@ public class PooledExecutorService implements TaskProvider {
         task.run();
       }
     },
-    
+
     /**
      * Throws a RuntimeException when called. The exception message includes
      * {@code task.toString()}, so name your runnables if you'd like nice messages
@@ -114,7 +114,7 @@ public class PooledExecutorService implements TaskProvider {
     if (!queue.offer(new SingleFireTask(runnable))) {
       saturationPolicy.dealWith(runnable);
     }
-    
+
     //    queue.add(new SingleFireTask(runnable));
   }
 

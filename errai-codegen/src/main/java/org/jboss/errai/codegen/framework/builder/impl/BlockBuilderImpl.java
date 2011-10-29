@@ -67,7 +67,7 @@ public class BlockBuilderImpl<T> implements BlockBuilder<T> {
    });
    return this;
  }
- 
+
  @Override
  public T finish() {
    if (callback != null) {

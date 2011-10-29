@@ -23,7 +23,7 @@ import org.junit.Test;
 
 /**
  * Epic team effort!
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  * @author Jonathan Fuerth <jfuerth@redhat.com>
  * @author Mike Brock <cbrock@redhat.com>
@@ -36,21 +36,21 @@ public class MetaClassTest {
    assertEquals("Wrong internal name generated for one-dimensional primitive array",
        "[C", internalName);
   }
-  
+
   @Test
   public void testInternalNameForOneDimensionalObjectArray() {
    String internalName = MetaClassFactory.get(String[].class).getInternalName();
    assertEquals("Wrong internal name generated for one-dimensional object array",
        "[Ljava/lang/String;", internalName);
   }
-  
+
   @Test
   public void testInternalNameForMultiDimensionalPrimitiveArray() {
    String internalName = MetaClassFactory.get(char[][].class).getInternalName();
    assertEquals("Wrong internal name generated for multidimensional primitive array",
        "[[C", internalName);
   }
-  
+
   @Test
   public void testInternalNameForMultiDimensionalObjectArray() {
    String internalName = MetaClassFactory.get(String[][].class).getInternalName();

@@ -40,7 +40,7 @@ public class ArithmeticExpressionBuilder extends ExpressionBuilder<ArithmeticOpe
   public ArithmeticExpressionBuilder(Object lhs, Object rhs, ArithmeticOperator operator) {
     super(lhs, rhs, operator);
   }
-  
+
   public static ArithmeticExpression create(Statement lhs) {
     return new ArithmeticExpressionBuilder(lhs, null, null);
   }

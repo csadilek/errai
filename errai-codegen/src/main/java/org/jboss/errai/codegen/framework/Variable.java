@@ -28,7 +28,7 @@ import org.jboss.errai.codegen.framework.util.GenUtil;
 
 /**
  * This class represents a variable.
- * 
+ *
  * Note that initialization using {@link LiteralValue}s takes effect immediately,
  * initialization using {@ link Statement}s needs to be deferred to generation time.
  *
@@ -51,7 +51,7 @@ public class Variable extends AbstractStatement {
 
   private Variable(String name, MetaClass type, Object initialization) {
     this(name, type);
-    
+
     LiteralValue<?> val = LiteralFactory.isLiteral(initialization);
     if (val != null) {
       this.type = (type == null) ? val.getType() : type;
@@ -66,7 +66,7 @@ public class Variable extends AbstractStatement {
   public void initialize(Object initializationValue) {
     this.initialization = initializationValue;
   }
-  
+
   private MetaClass inferType(Context context, Object initialization) {
     Statement initStatement = GenUtil.generate(context, initialization);
     MetaClass inferredType = (initStatement != null) ? initStatement.getType() : null;
@@ -171,11 +171,11 @@ public class Variable extends AbstractStatement {
     return value;
   }
 
-  
+
   public boolean isFinal() {
     return isFinal;
   }
-  
+
   private String hashString;
 
   private String hashString() {

@@ -24,7 +24,7 @@ import org.jboss.errai.codegen.framework.Context;
 public class ContinueStatement extends AbstractBranchStatement {
 
   public ContinueStatement() {}
-  
+
   public ContinueStatement(String label) {
     super(label);
   }

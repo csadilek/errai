@@ -26,7 +26,7 @@ import org.junit.Test;
 
 /**
  * Tests the generation of switch blocks using the {@link StatementBuilder} API.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class SwitchBlockBuilderTest extends AbstractStatementBuilderTest implements SwitchBlockBuilderTestResult {
@@ -131,7 +131,7 @@ public class SwitchBlockBuilderTest extends AbstractStatementBuilderTest impleme
 
     assertEquals("Failed to generate enum switch block", SWITCH_BLOCK_ENUM, s);
   }
-  
+
   @Test
   public void testSwitchBlockWithoutDefaultBlock() {
     String s = StatementBuilder.create()
@@ -166,7 +166,7 @@ public class SwitchBlockBuilderTest extends AbstractStatementBuilderTest impleme
 
     assertEquals("Failed to generate int switch block with fallthrough", SWITCH_BLOCK_INT_FALLTHROUGH, s);
   }
-  
+
   @Test
   public void testSwitchBlockChained() {
     String s = StatementBuilder.create()
@@ -188,7 +188,7 @@ public class SwitchBlockBuilderTest extends AbstractStatementBuilderTest impleme
 
     assertEquals("Failed to generate chained switch block", SWITCH_BLOCK_INT, s);
   }
-  
+
   @Test
   public void testSwitchBlockChainedOnChar() {
     String s = StatementBuilder.create()
@@ -206,10 +206,10 @@ public class SwitchBlockBuilderTest extends AbstractStatementBuilderTest impleme
         .append(Stmt.break_())
         .finish()
         .toJavaString();
-    
+
     assertEquals("Failed to generate char switch block", SWITCH_BLOCK_CHAR_CHAINED, s);
   }
-  
+
   @Test
   public void testSwitchBlockChainedOnInvocation() {
     String s = StatementBuilder.create()
@@ -229,7 +229,7 @@ public class SwitchBlockBuilderTest extends AbstractStatementBuilderTest impleme
         .append(Stmt.break_())
         .finish()
         .toJavaString();
-    
+
     assertEquals("Failed to generate switch block chained on invocation", SWITCH_BLOCK_CHAINED_INVOCATION, s);
   }
 }

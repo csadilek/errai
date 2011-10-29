@@ -156,7 +156,7 @@ public class JSONEncoder {
     if (i == 0) {
       build.append(",").append(keyValue(encodeString(SerializationParts.INSTANTIATE_ONLY,ctx), "true"));
     }
-    
+
     return build.append('}').toString();
   }
 

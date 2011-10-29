@@ -25,11 +25,11 @@ import org.jboss.errai.codegen.framework.control.branch.AbstractBranchStatement;
  */
 public class BranchCallElement extends AbstractCallElement {
   private AbstractBranchStatement branchStatement;
-  
+
   public BranchCallElement(AbstractBranchStatement branchStatement) {
     this.branchStatement = branchStatement;
   }
-  
+
   @Override
   public void handleCall(CallWriter writer, Context context, Statement statement) {
     writer.append(branchStatement.generate(context));

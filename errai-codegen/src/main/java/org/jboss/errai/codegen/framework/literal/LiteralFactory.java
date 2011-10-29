@@ -28,7 +28,7 @@ import org.jboss.errai.codegen.framework.meta.MetaType;
 
 /**
  * The literal factory provides a LiteralValue for the specified object (if possible).
- * 
+ *
  * @author Mike Brock <cbrock@redhat.com>
  */
 public class LiteralFactory {

@@ -55,7 +55,7 @@ public class MethodCall extends AbstractCallElement {
       CallParameters callParams = fromStatements(GenUtil.generateCallParameters(context, parameters));
 
       statement.generate(context);
-      
+
       MetaClass callType = statement.getType();
 
       MetaClass[] parameterTypes = callParams.getParameterTypes();
@@ -75,7 +75,7 @@ public class MethodCall extends AbstractCallElement {
 
       callParams = fromStatements(GenUtil.generateCallParameters(method, context, parameters));
       statement = new MethodInvocation(method, callParams);
-      
+
       resultType = statement.getType();
 
       nextOrReturn(writer, context, statement);

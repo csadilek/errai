@@ -87,12 +87,12 @@ public class ContextualProviderInjector extends TypeInjector {
     else {
       MetaType[] typeArgs = pType.getTypeParameters();
       MetaClass[] typeArgsClasses = new MetaClass[typeArgs.length];
-      
+
       for (int i = 0; i < typeArgs.length; i++) {
         typeArgsClasses[i] = (MetaClass) typeArgs[i];
       }
-      
-      
+
+
       Annotation[] qualifiers = injectableInstance.getQualifiers();
 
       if (providerInjector.getInjectedType().isAssignableTo(Provider.class)) {

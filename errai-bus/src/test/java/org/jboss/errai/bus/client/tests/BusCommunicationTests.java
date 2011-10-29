@@ -58,7 +58,7 @@ public class BusCommunicationTests extends AbstractErraiTest {
       }
     });
   }
-  
+
   public void testBasicRoundTripWithoutToSubjectCall() {
     runAfterInit(new Runnable() {
       public void run() {
@@ -196,7 +196,7 @@ public class BusCommunicationTests extends AbstractErraiTest {
             ++count;
             System.out.println("response (" + count + ")" + response);
             assertTrue(response);
-            assertEquals(3, count); 
+            assertEquals(3, count);
             finishTest();
           }
         }, TestRPCServiceRemote.class);
@@ -207,10 +207,10 @@ public class BusCommunicationTests extends AbstractErraiTest {
       }
     });
   }
-  
+
   private Throwable caught = null;
   private Message message = null;
-  
+
   public void testRPCThrowingException() {
     runAfterInit(new Runnable() {
       public void run() {
@@ -229,16 +229,16 @@ public class BusCommunicationTests extends AbstractErraiTest {
         TestRPCServiceRemote.class).exception();
       }
     });
-    
+
     Timer t = new Timer() {
       @Override
       public void run() {
         assertNotNull("Message is null.", message);
         assertNotNull("Throwable is null.", caught);
-        
+
         try {
           throw caught;
-        } 
+        }
         catch(TestException e) {
           finishTest();
         }

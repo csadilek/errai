@@ -47,4 +47,4 @@ public class Effects {
   public static void setOpacity(Element el, int opacity) {
     effect.setOpacity(el, opacity);
   }
-}                                                                                             
+}

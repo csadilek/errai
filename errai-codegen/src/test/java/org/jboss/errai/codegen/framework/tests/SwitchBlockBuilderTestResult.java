@@ -57,7 +57,7 @@ public interface SwitchBlockBuilderTestResult {
           "   case 1: break;" +
           "   default: break;" +
           " } ";
-  
+
   public static final String SWITCH_BLOCK_CHAR_CHAINED =
     "     switch (c) {\n" +
         "   case 'a': System.out.println(\"a\"); break;" +

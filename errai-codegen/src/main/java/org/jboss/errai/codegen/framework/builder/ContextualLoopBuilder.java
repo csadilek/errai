@@ -29,9 +29,9 @@ public interface ContextualLoopBuilder extends Statement, Builder {
 
   public BlockBuilder<StatementEnd> for_(Statement initializer, BooleanExpression condition);
   public BlockBuilder<StatementEnd> for_(Statement initializer, BooleanExpression condition, Statement countingExpression);
-  
+
   public BlockBuilder<WhileBuilder> do_();
-  
+
   public BlockBuilder<StatementEnd> while_();
   public BlockBuilder<StatementEnd> while_(BooleanOperator op, Statement rhs);
   public BlockBuilder<StatementEnd> while_(BooleanOperator op, Object rhs);

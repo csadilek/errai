@@ -30,13 +30,13 @@ import org.jboss.errai.codegen.framework.util.GenUtil;
 public abstract class ExpressionBuilder<T extends Operator> implements Statement, Expression<T> {
   protected Statement lhs;
   protected String lhsExpr;
-  
+
   protected Statement rhs;
   protected String rhsExpr;
-  
+
   protected T operator;
   protected String operExpr;
-  
+
   public ExpressionBuilder() {}
 
   public ExpressionBuilder(Statement rhs, T operator) {
@@ -53,7 +53,7 @@ public abstract class ExpressionBuilder<T extends Operator> implements Statement
     this(rhs, operator);
     this.lhsExpr = lhsExpr;
   }
-  
+
   public ExpressionBuilder(Object lhs, Object rhs, T operator) {
     this.lhs = (!(lhs instanceof Statement)) ? LiteralFactory.getLiteral(lhs) : (Statement) lhs;
     this.rhs = (!(rhs instanceof Statement)) ? LiteralFactory.getLiteral(rhs) : (Statement) rhs;
@@ -68,10 +68,10 @@ public abstract class ExpressionBuilder<T extends Operator> implements Statement
       if (rhs != null)
         operator.assertCanBeApplied(GenUtil.generate(context, rhs).getType());
     }
-    
+
     operExpr = "";
     rhsExpr = "";
-    
+
     if (lhsExpr == null && lhs != null) {
       if (lhs instanceof ExpressionBuilder && this.operator != null) {
         lhsExpr = "(" + lhs.generate(context) + ")";
@@ -126,7 +126,7 @@ public abstract class ExpressionBuilder<T extends Operator> implements Statement
   public void setRhs(Statement rhs) {
     this.rhs = rhs;
   }
-  
+
   @Override
   public T getOperator() {
     return operator;

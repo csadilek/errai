@@ -63,10 +63,10 @@ public class LoadNested extends AbstractCallElement {
     for (int i = 0; i < s.length(); i++) {
       if (!Character.isJavaIdentifierPart(s.charAt(0))) return false;
     }
-    
+
     return true;
   }
-  
+
   @Override
   public void handleCall(CallWriter writer, Context context, Statement statement) {
     nextOrReturn(writer, context, this.statement);

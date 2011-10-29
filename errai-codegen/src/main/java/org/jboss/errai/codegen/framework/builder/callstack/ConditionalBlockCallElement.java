@@ -23,12 +23,12 @@ import org.jboss.errai.codegen.framework.control.AbstractConditionalBlock;
 /**
  * A {@link CallElement} for conditional blocks. It can only be the last
  * element in a chain of calls.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class ConditionalBlockCallElement extends AbstractCallElement {
   private AbstractConditionalBlock conditionalBlock;
-  
+
   public ConditionalBlockCallElement(final AbstractConditionalBlock conditionalBlock) {
     this.conditionalBlock = conditionalBlock;
   }

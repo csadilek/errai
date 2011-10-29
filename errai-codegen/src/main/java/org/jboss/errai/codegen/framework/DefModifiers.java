@@ -22,7 +22,7 @@ public class DefModifiers implements Builder {
   public static DefModifiers none() {
     return new DefModifiers();
   }
-  
+
   public DefModifiers addModifiers(Modifier... modifier) {
     modifiers.addAll(Arrays.asList(modifier));
     return this;

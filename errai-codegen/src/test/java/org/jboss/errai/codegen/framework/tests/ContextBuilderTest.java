@@ -38,7 +38,7 @@ import org.junit.Test;
 
 /**
  * Tests the {@link org.jboss.errai.codegen.framework.builder.impl.ContextBuilder} API.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class ContextBuilderTest extends AbstractStatementBuilderTest {
@@ -49,7 +49,7 @@ public class ContextBuilderTest extends AbstractStatementBuilderTest {
         .declareVariable("n", Integer.class)
         .initializeWith(10)
         .toJavaString();
-      
+
     assertEquals("failed to generate variable declaration using a literal initialization",
         "Integer n = 10;", declaration);
   }
@@ -60,11 +60,11 @@ public class ContextBuilderTest extends AbstractStatementBuilderTest {
         .declareVariable("list", new TypeLiteral<List<String>>() {})
         .finish()
         .toJavaString();
-      
+
     assertEquals("failed to generate variable declaration using a type literal",
         "List<String> list;", declaration);
   }
-  
+
   @Test
   public void testDeclareVariableWithIntegerTypeInference() {
     String declaration = ContextBuilder.create()
@@ -222,7 +222,7 @@ public class ContextBuilderTest extends AbstractStatementBuilderTest {
     VariableReference str = ctx.getVariable("str");
     assertEquals("Wrong variable name", "str", str.getName());
     Assert.assertEquals("Wrong variable type", MetaClassFactory.get(String.class), str.getType());
-    
+
     // variable value cannot be verified before initialization statement was generated.
     Variable v = ctx.getVariables().get("str");
     v.generate(ctx);
@@ -235,7 +235,7 @@ public class ContextBuilderTest extends AbstractStatementBuilderTest {
 
     VariableReference str = ctx.getVariable("str");
     assertEquals("Wrong variable name", "str", str.getName());
-    
+
     // variable type and value cannot be verified before initialization statement was generated.
     Variable v = ctx.getVariables().get("str");
     v.generate(ctx);

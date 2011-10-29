@@ -50,7 +50,7 @@ public class ConstructorBlockBuilderImpl<T extends ClassStructureBuilder<T>> ext
     append(new AbstractStatement() {
       @Override
       public String generate(Context context) {
-        return "super" + 
+        return "super" +
           CallParameters.fromStatements(GenUtil.generateCallParameters(context, parameters)).generate(context);
       }
     });
@@ -63,7 +63,7 @@ public class ConstructorBlockBuilderImpl<T extends ClassStructureBuilder<T>> ext
     append(new AbstractStatement() {
       @Override
       public String generate(Context context) {
-        return "this" + 
+        return "this" +
           CallParameters.fromStatements(GenUtil.generateCallParameters(context, parameters)).generate(context);
       }
     });

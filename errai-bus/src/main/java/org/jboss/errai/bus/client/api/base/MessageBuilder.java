@@ -46,7 +46,7 @@ public class MessageBuilder {
   public static MessageBuildSubject<MessageBuildSendableWithReply> createMessage() {
     return new AbstractMessageBuilder(provider.get()).start();
   }
-  
+
   /**
    * Create a new message for the provided subject.
    *
@@ -76,7 +76,7 @@ public class MessageBuilder {
       return new AbstractMessageBuilder<MessageReplySendable>(new ConversationMessageWrapper(message, newMessage)).start();
     }
   }
-  
+
   /**
    * Create a conversational messages for the provided subject
    *
@@ -108,7 +108,7 @@ public class MessageBuilder {
   public static AbstractRemoteCallBuilder createCall() {
     return new AbstractRemoteCallBuilder(CommandMessage.create());
   }
-  
+
   /**
    * Creates an RPC call.
    *
@@ -121,7 +121,7 @@ public class MessageBuilder {
   public static <R, T> T createCall(RemoteCallback<R> callback, Class<T> service) {
     return new AbstractRemoteCallBuilder(CommandMessage.create()).call(callback, service);
   }
-  
+
   /**
    * Creates an RPC call with an ErrorCallback.
    *

@@ -122,7 +122,7 @@ public class RPCDemo {
             new RemoteCallback<Void>() {
               public void callback(Void response) {
               }
-            }, 
+            },
             new ErrorCallback() {
               public boolean error(Message message, Throwable throwable) {
                 try {

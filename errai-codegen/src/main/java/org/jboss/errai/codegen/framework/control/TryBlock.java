@@ -39,7 +39,7 @@ public class TryBlock extends AbstractStatement {
   public void addCatchBlock(Variable exception) {
     catchBlocks.put(exception, new BlockStatement());
   }
-  
+
   public BlockStatement getCatchBlock(Variable exceptionVar) {
     return catchBlocks.get(exceptionVar);
   }
@@ -47,7 +47,7 @@ public class TryBlock extends AbstractStatement {
   public BlockStatement getFinallyBlock() {
     if (finallyBlock == null)
       finallyBlock = new BlockStatement();
-    
+
     return finallyBlock;
   }
 

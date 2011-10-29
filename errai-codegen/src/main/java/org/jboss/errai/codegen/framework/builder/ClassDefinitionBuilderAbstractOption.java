@@ -21,6 +21,6 @@ package org.jboss.errai.codegen.framework.builder;
  */
 public interface ClassDefinitionBuilderAbstractOption<T extends ClassStructureBuilder<T>>
     extends ClassDefinitionBuilderInterfaces<T> {
-  
+
   public ClassDefinitionBuilderInterfaces<ClassStructureBuilderAbstractMethodOption> abstractClass();
 }

@@ -50,10 +50,10 @@ public class ForLoop extends AbstractConditionalBlock {
         context.addVariable((Variable) initializer);
       }
     }
-    
+
     if (!builder.toString().endsWith(";"))
       builder.append(";");
-    
+
     builder.append(" ").append(getCondition().generate(context)).append("; ");
 
     if (afterBlock != null) {

@@ -58,7 +58,7 @@ public class BuildMetaMethod extends MetaMethod implements Builder {
   private ThrowsDeclaration throwsDeclaration;
 
   private MetaMethod reifiedFormOf;
-  
+
   public BuildMetaMethod(BuildMetaClass declaringClass,
                          Statement body,
                          Scope scope,
@@ -229,7 +229,7 @@ public class BuildMetaMethod extends MetaMethod implements Builder {
   public void setThrowsDeclaration(ThrowsDeclaration throwsDeclaration) {
     this.throwsDeclaration = throwsDeclaration;
   }
-  
+
   public boolean isReifiedForm() {
     return reifiedFormOf != null;
   }
@@ -245,7 +245,7 @@ public class BuildMetaMethod extends MetaMethod implements Builder {
   @Override
   public String toJavaString() {
     this.context = Context.create(declaringClass.getContext());
-    
+
     for (Parameter p : defParameters.getParameters()) {
       context.addVariable(Variable.create(p.getName(), p.getType()));
     }

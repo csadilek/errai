@@ -33,12 +33,12 @@ import org.jboss.errai.codegen.framework.util.GenUtil;
 
 /**
  * StatementBuilder to generate if blocks.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class IfBlockBuilderImpl extends AbstractStatementBuilder implements ContextualIfBlockBuilder, IfBlockBuilder,
     ElseBlockBuilder {
-  
+
   private IfBlock ifBlock;
 
   protected IfBlockBuilderImpl(Context context, CallElementBuilder callElementBuilder) {
@@ -59,7 +59,7 @@ public class IfBlockBuilderImpl extends AbstractStatementBuilder implements Cont
   public BlockBuilder<ElseBlockBuilder> ifNot() {
     return if_(new BooleanExpressionBuilder().negate());
   }
-  
+
   @Override
   public BlockBuilder<ElseBlockBuilder> if_(BooleanOperator op, Statement rhs) {
     if (rhs == null)

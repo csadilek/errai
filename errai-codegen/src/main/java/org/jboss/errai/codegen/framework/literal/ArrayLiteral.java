@@ -38,7 +38,7 @@ public class ArrayLiteral extends LiteralValue<Object> {
   private Class<?> arrayType;
 
   private MetaClass mArrayType;
-  
+
   public ArrayLiteral(Object value) {
     super(value);
 
@@ -50,14 +50,14 @@ public class ArrayLiteral extends LiteralValue<Object> {
     }
 
     this.dimensions = dim;
-    
+
     if (MetaClass.class.isAssignableFrom(type)) {
       type = Class.class;
     }
     else if (MetaType.class.isAssignableFrom(type)) {
       type = Type.class;
     }
-    
+
     this.arrayType = type;
 
     mArrayType = MetaClassFactory.get(arrayType).asArrayOf(dim);

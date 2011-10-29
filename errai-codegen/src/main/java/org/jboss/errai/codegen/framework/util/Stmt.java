@@ -44,7 +44,7 @@ public class Stmt {
   public static StatementBegin create() {
     return StatementBuilder.create();
   }
-  
+
   public static StatementBegin create(Context ctx) {
     return StatementBuilder.create(ctx);
   }

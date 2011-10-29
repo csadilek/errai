@@ -1872,16 +1872,16 @@ OpenAjax.hub.InlineHubClient.prototype.getParameters = function() {
 
  Copyright 2006-2009 OpenAjax Alliance
 
- Licensed under the Apache License, Version 2.0 (the "License"); 
- you may not use this file except in compliance with the License. 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
  http://www.apache.org/licenses/LICENSE-2.0
 
- Unless required by applicable law or agreed to in writing, software 
- distributed under the License is distributed on an "AS IS" BASIS, 
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- See the License for the specific language governing permissions and 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
  limitations under the License.
  */
 
@@ -3443,14 +3443,14 @@ smash._protocolID = "openajax-2.0";
 //smash._initialClientURI = undefined; // For use by the smash provider loaded by a client. Should only be changed from the default value if the client does URI redirection at load time. Otherwise, we will assume that the current URI was also the initial URI
 
 //--- security token stuff ---
-//configurable pseudo random number generator (prng) to use for generating the security token. 
-//If not set, we use Math.random. 
+//configurable pseudo random number generator (prng) to use for generating the security token.
+//If not set, we use Math.random.
 //If set, the provided random number generator must support a function nextRandomB64Str(strlength:integer)
 //that returns a string of length strlength, where each character is a "modified Base64 for URL" character.
 //This includes A-Z, a-z, and 0-9 for the first 62 digits, like standard Base64 encoding, but
 //no padding '='. And the '+', '/' characters of standard Base64 are replaced by '-', '_'.
 smash._prng = undefined;
-smash._securityTokenLength = 6; // configurable security token length. If default value is not used, both manager and clients have to change it to the same value. 
+smash._securityTokenLength = 6; // configurable security token length. If default value is not used, both manager and clients have to change it to the same value.
 smash._securityTokenOverhead = null; // the number of characters in a serialized message consumed by the security tokens
 smash._computeOtherTokenConstants = function() {
     smash._securityTokenOverhead = 2 * smash._securityTokenLength;
@@ -4097,11 +4097,11 @@ smash.SECommMessage.CONNECT_ACK = "cac";
 //DISCONNECT message
 smash.SECommMessage.DISCONNECT = "xcon";
 smash.SECommMessage.DISCONNECT_ACK = "xac";
-//PUBLISH message: additionalHeader is {f:"S"} or {f:"J"} representing that the payload is a string or JSON, 
+//PUBLISH message: additionalHeader is {f:"S"} or {f:"J"} representing that the payload is a string or JSON,
 //topic and payload are topic, payload of message
 smash.SECommMessage.PUBLISH = "pub";
-//DISTRIBUTE message: additionalHeader is {f: string, s:[string, ...]} where f is defined as in the PUBLISH message, 
-//and s representing subIds that should receive this message; topic and payload are as in PUBLISH message 
+//DISTRIBUTE message: additionalHeader is {f: string, s:[string, ...]} where f is defined as in the PUBLISH message,
+//and s representing subIds that should receive this message; topic and payload are as in PUBLISH message
 smash.SECommMessage.DISTRIBUTE = "dis";
 //SUSCRIBE message: additionalHeader is {subId: string}, payload==null, topic is subscription topic
 smash.SECommMessage.SUBSCRIBE = "sub";
@@ -4414,7 +4414,7 @@ smash.SEComm = function() {
     }
 }
 
-//Static array which contains the list of the currently loaded instances. The array is indexed by the url of the child component. 
+//Static array which contains the list of the currently loaded instances. The array is indexed by the url of the child component.
 smash.SEComm.instances = [];
 
 //-----------------------------------------------------------------------------------------------
@@ -5032,7 +5032,7 @@ smash.CommLib = function(child, controllers, clientName) {
 //
 //- a message authentication code (MAC): HMAC-SHA-1 (RFC2104/2202)
 //BigEndianWord[5] <- smash.crypto.hmac_sha1(
-//                    BigEndianWord[3-16] keyWA, 
+//                    BigEndianWord[3-16] keyWA,
 //                    Ascii or Unicode string dataS,
 // 		 		       int chrsz (8 for Asci/16 for Unicode)
 //
@@ -5043,7 +5043,7 @@ smash.CommLib = function(child, controllers, clientName) {
 //addSeed(String seed)
 //BigEndianWord[len] <- nextRandomOctets(int len)
 //Base64-String[len] <- nextRandomB64Str(int len)
-//Note: HMAC-SHA1 in counter-mode does not provide forward-security on corruption. 
+//Note: HMAC-SHA1 in counter-mode does not provide forward-security on corruption.
 // However, the PRNG state is kept inside a closure. So if somebody can break the closure, he probably could
 // break a whole lot more and forward-security of the prng is not the highest of concerns anymore :-)
 

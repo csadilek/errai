@@ -28,7 +28,7 @@ public class Label extends AbstractStatement {
   public static Label create(String name) {
     return new Label(name);
   }
-  
+
   private Label(String name) {
     this.name = name;
   }
@@ -36,12 +36,12 @@ public class Label extends AbstractStatement {
   public String getName() {
     return name;
   }
-  
+
   @Override
   public String generate(Context context) {
     return name+":";
   }
-  
+
   public LabelReference getReference() {
     return new LabelReference(name);
   }

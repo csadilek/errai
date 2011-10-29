@@ -66,6 +66,6 @@ public class DetachmentTest extends CommonTestSetup {
     User exportedUser = (User) beanManager.clone(user);
 
     assertEquals(user.getUserId(), exportedUser.getUserId());
-    assertNull("relation should be null", exportedUser.getOrders()); // not exported (null)   
+    assertNull("relation should be null", exportedUser.getOrders()); // not exported (null)
   }
 }

@@ -21,23 +21,23 @@ import org.jboss.errai.codegen.framework.meta.impl.build.BuildMetaClass;
 
 /**
  * Represents an inner class.
- *  
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class InnerClass {
 
   private BuildMetaClass clazz = null;
-  
+
   public InnerClass(BuildMetaClass clazz) {
     this.clazz = clazz;
     this.clazz.setInner(true);
   }
-  
+
   public String generate(Context context) {
     clazz.setContext(Context.create(context));
     return clazz.toJavaString();
   }
-  
+
   public MetaClass getType() {
     return clazz;
   }

@@ -17,11 +17,11 @@
 package org.jboss.errai.codegen.framework;
 
 /**
- * Represents a boolean expression. 
- * 
+ * Represents a boolean expression.
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public interface BooleanExpression extends Expression<BooleanOperator>, Statement {
-  
+
   public BooleanExpression negate();
 }
