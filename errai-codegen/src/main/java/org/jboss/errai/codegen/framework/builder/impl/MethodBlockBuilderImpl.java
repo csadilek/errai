@@ -117,7 +117,7 @@ public class MethodBlockBuilderImpl<T> extends BlockBuilderImpl<T>
         p.add(MetaClassFactory.get((TypeLiteral) o));
       }
     }
-    
+
     defParameters = DefParameters.fromTypeArray(p.toArray(new MetaClass[p.size()]));
 
     return this;

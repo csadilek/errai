@@ -7,10 +7,10 @@ import org.jboss.errai.codegen.framework.meta.MetaClassFactory;
 
 /**
  * @author Mike Brock <cbrock@redhat.com>
- */                         
+ */
 public class EmptyStatement implements Statement {
   public static final Statement INSTANCE = new EmptyStatement();
-  
+
   @Override
   public String generate(Context context) {
     throw new RuntimeException("empty statement cannot be generated");

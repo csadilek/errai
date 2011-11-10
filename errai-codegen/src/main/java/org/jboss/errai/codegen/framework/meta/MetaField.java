@@ -35,7 +35,7 @@ public abstract class MetaField implements HasAnnotations, MetaClassMember {
   public int hashCode() {
     return toString().hashCode();
   }
-  
+
   public static class ArrayLengthMetaField extends MetaField {
 
     private MetaClass componentType;
@@ -129,6 +129,6 @@ public abstract class MetaField implements HasAnnotations, MetaClassMember {
       return null;
     }
   }
-  
-  
+
+
 }

@@ -33,7 +33,7 @@ import org.jboss.errai.codegen.framework.meta.MetaClassFactory;
 
 /**
  * StatementBuilder to generate try/catch/finally blocks.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class TryBlockBuilderImpl extends AbstractStatementBuilder implements TryBlockBuilder, CatchBlockBuilder {

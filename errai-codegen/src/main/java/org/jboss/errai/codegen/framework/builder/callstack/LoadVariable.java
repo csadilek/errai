@@ -77,7 +77,7 @@ public class LoadVariable extends AbstractCallElement {
       public String generate(Context context) {
         StringBuilder buf = new StringBuilder((classMember
                 && !context.isNonAmbiguous(ref.getName()) ? "this." : "") + getName());
-        
+
         for (Statement s : idx) {
           buf.append('[').append(s.generate(context)).append(']');
         }
@@ -88,7 +88,7 @@ public class LoadVariable extends AbstractCallElement {
       @Override
       public MetaClass getType() {
         MetaClass ret;
-        
+
         int dims = GenUtil.getArrayDimensions(ref.getType());
 
         if (ref.getType().isArray() && idx.length > 0) {
@@ -103,7 +103,7 @@ public class LoadVariable extends AbstractCallElement {
         else {
           ret = ref.getType();
         }
-        
+
         return ret;
       }
     };

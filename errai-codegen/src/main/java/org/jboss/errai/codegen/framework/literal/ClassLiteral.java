@@ -26,7 +26,7 @@ import org.jboss.errai.codegen.framework.meta.MetaClassFactory;
  * @author Mike Brock <cbrock@redhat.com>
  */
 public class ClassLiteral extends LiteralValue<Class<?>> {
-  
+
   public ClassLiteral(Class<?> value) {
     super(value);
   }
@@ -39,12 +39,12 @@ public class ClassLiteral extends LiteralValue<Class<?>> {
       return getClassReference(MetaClassFactory.get(getValue()), context) + ".class";
     }
   }
-  
+
   @Override
   public MetaClass getType() {
     return MetaClassFactory.get(Class.class);
   }
-  
+
   public MetaClass getActualType() {
     return super.getType();
   }

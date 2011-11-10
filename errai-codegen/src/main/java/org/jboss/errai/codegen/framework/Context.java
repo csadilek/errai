@@ -215,7 +215,7 @@ public class Context {
     while ((ctx = ctx.parent) != null);
     return false;
   }
-  
+
   public boolean isNonAmbiguous(String symbol) {
     Context ctx = this;
     int matches = 0;

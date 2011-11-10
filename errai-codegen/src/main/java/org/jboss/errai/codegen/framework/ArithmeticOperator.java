@@ -27,7 +27,7 @@ public enum ArithmeticOperator implements Operator {
   Multiplication("*", 1, Number.class),
   Division("/", 1, Number.class),
   Remainder("%", 1, Number.class);
-  
+
   private final Operator operator;
 
   ArithmeticOperator(String canonicalString, int operatorPrecedence, Class<?>... constraints) {

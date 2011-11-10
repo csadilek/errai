@@ -17,10 +17,10 @@
 package org.jboss.errai.codegen.framework;
 
 /**
- * Represents an arithmetic expression. 
- * 
+ * Represents an arithmetic expression.
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public interface ArithmeticExpression extends Expression<ArithmeticOperator>, Statement {
-  
+
 }

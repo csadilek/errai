@@ -22,7 +22,7 @@ public class MarshallingGenUtil {
   public static String getArrayVarName(String clazz) {
     return "arrayOf_" + clazz.replaceAll("\\.", "_");
   }
-  
+
   public static String getVarName(String clazz) {
     return clazz.replaceAll("\\.", "_");
   }

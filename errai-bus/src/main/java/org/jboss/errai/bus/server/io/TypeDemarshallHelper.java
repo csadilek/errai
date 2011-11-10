@@ -61,7 +61,7 @@ public class TypeDemarshallHelper {
 
   public static Object instantiate(Map oMap, DecodingContext ctx) {
     try {
-            
+
       Class clazz = Thread.currentThread().getContextClassLoader().loadClass((String) oMap.get(SerializationParts.ENCODED_TYPE));
       String objId = (String) oMap.get(SerializationParts.OBJECT_ID);
 
@@ -78,10 +78,10 @@ public class TypeDemarshallHelper {
       else if (java.sql.Date.class.isAssignableFrom(clazz)) {
         return new java.sql.Date(getNumeric(oMap.get("Value")));
       }
-      
+
       Object newInstance = clazz.newInstance();
       if (objId != null) ctx.putObject(objId, newInstance);
-      
+
       return newInstance;
 
     }
@@ -127,7 +127,7 @@ public class TypeDemarshallHelper {
         Map<?, ?> oMap = (Map) o;
         if (oMap.containsKey(SerializationParts.ENCODED_TYPE)) {
           Object newInstance = instantiate(oMap, ctx);
-          
+
           if (ctx.hasUnsatisfiedDependency(o)) {
             ctx.swapDepReference(o, newInstance);
           }

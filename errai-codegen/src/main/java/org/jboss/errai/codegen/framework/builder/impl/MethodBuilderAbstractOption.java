@@ -33,7 +33,7 @@ public class MethodBuilderAbstractOption<T> implements Finishable<T> {
   public MethodBuilderAbstractOption(MethodBuildCallback<T> callback) {
     this.callback = callback;
   }
-  
+
   public T throws_(Class<? extends Throwable>... exceptionTypes) {
     throwsDeclaration = ThrowsDeclaration.of(exceptionTypes);
     return callback.callback(null, null, new DefModifiers(Modifier.Abstract), throwsDeclaration);
@@ -43,7 +43,7 @@ public class MethodBuilderAbstractOption<T> implements Finishable<T> {
     throwsDeclaration = ThrowsDeclaration.of(exceptions);
     return callback.callback(null, null, new DefModifiers(Modifier.Abstract), throwsDeclaration);
   }
-  
+
   @Override
   public T finish() {
     if (callback != null) {

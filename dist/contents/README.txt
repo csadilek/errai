@@ -11,7 +11,7 @@ Having said so, we assume that you have some knowledge about Java and especially
 If you don't know anything about GWT, then we suggest you make yourself familiar with it
 before reading any further:
 
-    GWT Introduction: http://code.google.com/webtoolkit/overview.html    
+    GWT Introduction: http://code.google.com/webtoolkit/overview.html
 
 [Contents of this distribution]
 
@@ -22,7 +22,7 @@ before reading any further:
     |---quickstart	(quickstart guide)
     |-examples		(demo apps)
     |-libi		(errai libs)
-    
+
 
 [Running the examples]
 

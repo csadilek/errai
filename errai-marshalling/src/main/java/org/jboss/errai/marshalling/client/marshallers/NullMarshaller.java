@@ -8,7 +8,7 @@ import org.jboss.errai.marshalling.client.api.MarshallingSession;
  */
 public class NullMarshaller implements Marshaller<Object, Object> {
   public static final Marshaller<Object, Object> INSTANCE = new NullMarshaller();
-  
+
   @Override
   public Class<Object> getTypeHandled() {
     return Object.class;

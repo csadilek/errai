@@ -22,34 +22,34 @@ public class Implementations {
                 .implementsInterface(clazz)
                 .body();
   }
-  
+
   public static ClassStructureBuilder<?> implement(Class<?> clazz, String implClassName) {
     return ClassBuilder.define(clazz.getPackage().getName() + "." + implClassName)
                 .publicScope()
                 .implementsInterface(clazz)
                 .body();
   }
-  
+
   public static ClassStructureBuilder<?> implement(Class<?> clazz, String implPackageName, String implClassName) {
     return ClassBuilder.define(implPackageName+ "." + implClassName)
                 .publicScope()
                 .implementsInterface(clazz)
                 .body();
   }
-  
-  
-  
+
+
+
   public static void autoInitializedField(ClassStructureBuilder<?> builder, MetaClass type,
                                            String name, Class<?> implementation) {
 
      autoInitializedField(builder, type, name, MetaClassFactory.get(implementation));
   }
-  
+
   public static void autoInitializedField(ClassStructureBuilder<?> builder, MetaClass type,
                                           String name, MetaClass implementation) {
 
     implementation = MetaClassFactory.parameterizedAs(implementation, type.getParameterizedType());
-    
+
     builder.privateField(name, type)
             .initializesWith(Stmt.newObject(implementation)).finish();
   }
@@ -57,7 +57,7 @@ public class Implementations {
   public static StringBuilderBuilder newStringBuilder() {
     final ContextualStatementBuilder statementBuilder
             = Stmt.nestedCall(Stmt.newObject(StringBuilder.class));
-    
+
     return new StringBuilderBuilder() {
 
       @Override
@@ -77,16 +77,16 @@ public class Implementations {
       }
     };
   }
-  
-  
+
+
   public static interface StringBuilderBuilder extends Statement {
      public StringBuilderBuilder append(Object statement);
   }
-  
+
   public static BlockBuilder<StatementEnd> autoForLoop(String varName, Statement value) {
     return Stmt.for_(Stmt.declareVariable(int.class).named("i").initializeWith(0),
             Bool.lessThan(Variable.get("i"), value),
             new StringStatement(varName + "++"));
   }
-  
+
 }

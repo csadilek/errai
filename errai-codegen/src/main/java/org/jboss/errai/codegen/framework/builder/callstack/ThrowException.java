@@ -28,7 +28,7 @@ import org.jboss.errai.codegen.framework.exception.InvalidTypeException;
  */
 public class ThrowException extends AbstractCallElement {
   private String exceptionVariableName;
-  
+
   private Class<? extends Throwable> throwableType;
   private Object[] parameters;
 

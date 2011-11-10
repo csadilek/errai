@@ -161,7 +161,7 @@ public class ServiceProcessor implements MetaDataProcessor<BootstrapContext> {
       Map<String, MessageCallback> epts = new HashMap<String, MessageCallback>();
 
       final Object targetService = svc;
-      
+
       // we scan for endpoints
       for (final Method method : loadClass.getDeclaredMethods()) {
         if (method.isAnnotationPresent(Endpoint.class)) {
@@ -255,7 +255,7 @@ public class ServiceProcessor implements MetaDataProcessor<BootstrapContext> {
         throw new RuntimeException("This API is not supported in the server-side environment.");
       }
     };
-    
+
     return svc;
   }
 }

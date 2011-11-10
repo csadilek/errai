@@ -47,7 +47,7 @@ import org.junit.Test;
 
 /**
  * Tests the {@link StatementBuilder} API.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class StatementBuilderTest extends AbstractStatementBuilderTest {
@@ -116,7 +116,7 @@ public class StatementBuilderTest extends AbstractStatementBuilderTest {
       assertTrue(ive.getCause() instanceof NumberFormatException);
     }
   }
-  
+
   @Test
   public void testDeclareVariableWithObjectInitializationWithExactTypeProvided() {
     Context ctx = Context.create();
@@ -144,7 +144,7 @@ public class StatementBuilderTest extends AbstractStatementBuilderTest {
     assertEquals("Wrong variable name", "str", str.getName());
     Assert.assertEquals("Wrong variable type", MetaClassFactory.get(String.class), str.getType());
   }
-  
+
   @Test
   public void testDeclareVariableWithStatementInitialization() {
     Context ctx = Context.create();
@@ -504,22 +504,22 @@ public class StatementBuilderTest extends AbstractStatementBuilderTest {
     String s = Stmt.create(Context.create().autoImport()).nestedCall(
             Stmt.newObject(Foo.class)).loadField("bar").loadField("name").assignValue("test").toJavaString();
 
-    assertEquals("failed to generate nested field assignment", 
+    assertEquals("failed to generate nested field assignment",
         "new Foo().bar.name = \"test\";", s);
   }
-  
+
   @Test
   public void testCastDown() {
     Statement stmt = Cast.to(String.class, Stmt.declareVariable("obj", Object.class).loadVariable("obj"));
     assertEquals("failed to generate cast", "(String) obj", stmt.generate(Context.create()));
   }
-  
+
   @Test
   public void testCastUp() {
     Statement stmt = Cast.to(Object.class, Stmt.declareVariable("str", String.class).loadVariable("str"));
     assertEquals("created a redundant cast", "str", stmt.generate(Context.create()));
   }
-  
+
   @Test
   public void testInvalidCast() {
     try {

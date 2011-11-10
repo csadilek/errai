@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  * <p>
  * Note that this annotation has been renamed to {@link Portable}. Use the new
  * name instead.
- * 
+ *
  * @deprecated This annotation has been renamed to {@link Portable}.
  * @since Errai 2.0
  * @author Mike Brock <cbrock@redhat.com>

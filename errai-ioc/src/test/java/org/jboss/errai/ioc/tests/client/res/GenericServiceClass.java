@@ -1,7 +1,7 @@
 package org.jboss.errai.ioc.tests.client.res;
 
 /**
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  * @param <T>
  */

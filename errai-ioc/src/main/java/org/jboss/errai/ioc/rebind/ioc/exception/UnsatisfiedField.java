@@ -25,12 +25,12 @@ import org.jboss.errai.codegen.framework.meta.MetaField;
 public class UnsatisfiedField extends UnsatisfiedDependency {
 
   private MetaField field;
-  
+
   public UnsatisfiedField(MetaField field, MetaClass enclosingType, MetaClass injectedType) {
     super(enclosingType, injectedType);
     this.field = field;
   }
-  
+
   @Override
   public String toString() {
     StringBuilder sbuf = new StringBuilder();
@@ -39,7 +39,7 @@ public class UnsatisfiedField extends UnsatisfiedDependency {
       .append(" could not be satisfied for type: ").append(injectedType.getFullyQualifiedName()).append("\n");
     return sbuf.toString();
   }
-  
+
   public MetaField getField() {
     return field;
   }

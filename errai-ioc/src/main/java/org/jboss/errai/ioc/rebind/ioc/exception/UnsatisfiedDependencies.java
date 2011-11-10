@@ -31,7 +31,7 @@ public class UnsatisfiedDependencies {
 
     unsatisfiedDependencies.add(dependency);
   }
-  
+
   @Override
   public String toString() {
     StringBuilder buf = new StringBuilder();
@@ -40,7 +40,7 @@ public class UnsatisfiedDependencies {
     }
     return buf.toString();
   }
-  
+
   public List<UnsatisfiedDependency> get() {
     return unsatisfiedDependencies;
   }

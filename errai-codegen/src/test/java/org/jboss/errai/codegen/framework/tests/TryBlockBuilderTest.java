@@ -23,7 +23,7 @@ import org.junit.Test;
 
 /**
  * Tests the generation of try/catch/finally blocks using the {@link StatementBuilder} API.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class TryBlockBuilderTest extends AbstractStatementBuilderTest implements TryBlockBuilderTestResult {
@@ -37,7 +37,7 @@ public class TryBlockBuilderTest extends AbstractStatementBuilderTest implements
 
     assertEquals("Failed to generate empty try catch block", EMPTY_TRY_FINALLY_BLOCK, s);
   }
-  
+
   @Test
   public void testTryFinallyBlock() {
     String s = StatementBuilder.create()
@@ -49,7 +49,7 @@ public class TryBlockBuilderTest extends AbstractStatementBuilderTest implements
 
     assertEquals("Failed to generate empty try finally block", EMPTY_TRY_FINALLY_BLOCK, s);
   }
-  
+
   @Test
   public void testTryCatchBlock() {
     String s = StatementBuilder.create()
@@ -61,7 +61,7 @@ public class TryBlockBuilderTest extends AbstractStatementBuilderTest implements
 
     assertEquals("Failed to generate empty try catch block", EMPTY_TRY_CATCH_BLOCK, s);
   }
-  
+
   @Test
   public void testTryCatchFinallyBlockEmpty() {
     String s = StatementBuilder.create()
@@ -75,7 +75,7 @@ public class TryBlockBuilderTest extends AbstractStatementBuilderTest implements
 
     assertEquals("Failed to generate empty try catch finally block", EMPTY_TRY_CATCH_FINALLY_BLOCK, s);
   }
-  
+
   @Test
   public void testTryMultipleCatchFinallyBlock() {
     String s = StatementBuilder.create()
@@ -91,7 +91,7 @@ public class TryBlockBuilderTest extends AbstractStatementBuilderTest implements
 
     assertEquals("Failed to generate empty try catch finally block", EMPTY_TRY_MULTIPLE_CATCH_FINALLY_BLOCK, s);
   }
-  
+
   @Test
   public void testTryCatchFinallyBlock() {
     String s = StatementBuilder.create()

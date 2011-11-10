@@ -31,7 +31,7 @@ import org.jboss.errai.codegen.framework.meta.impl.build.BuildMetaMethod;
 /**
  * @author Christian Sadilek <csadilek@redhat.com>
  */
-public class ClassBuilderAbstractMethodOption extends ClassBuilder<ClassStructureBuilderAbstractMethodOption> 
+public class ClassBuilderAbstractMethodOption extends ClassBuilder<ClassStructureBuilderAbstractMethodOption>
     implements ClassStructureBuilderAbstractMethodOption {
 
   ClassBuilderAbstractMethodOption(ClassBuilder that, Context context) {

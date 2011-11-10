@@ -155,7 +155,7 @@ public class ErrorHelper {
         "\nexception: " + e +
         "\ndisconnect: " + disconnect;
     System.err.println(logMessage);
-    
+
     try {
       if (message.getErrorCallback() != null) {
         if (!message.getErrorCallback().error(message, e)) {

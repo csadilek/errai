@@ -42,7 +42,7 @@ public class DefParameters extends AbstractStatement {
     }
     return new DefParameters(parameters);
   }
-  
+
   public static DefParameters from(MetaMethod method, Parameter... mergeNames) {
     List<Parameter> parameters = new ArrayList<Parameter>();
 

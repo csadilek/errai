@@ -17,7 +17,7 @@ GWT_VERSION=2.0.0-$SVN_REV
 ant clean
 ant -Dgwt.version=$GWT_VERSION
 
-for artifact in `ls build/lib`; do 
+for artifact in `ls build/lib`; do
 	artifact_packaging=${artifact##*.}
 	artifact_name=${artifact%.*}
 	mvn deploy:deploy-file -DgroupId=com.google.gwt \

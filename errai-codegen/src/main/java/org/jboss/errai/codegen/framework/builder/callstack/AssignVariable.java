@@ -26,7 +26,7 @@ import org.jboss.errai.codegen.framework.util.GenUtil;
 
 /**
  * {@link CallElement} to assign a value to a variable.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class AssignVariable extends AbstractCallElement {
@@ -44,9 +44,9 @@ public class AssignVariable extends AbstractCallElement {
 
     final Statement stmt = new AssignmentBuilder(false, operator, (VariableReference) statement, GenUtil.generate(context,
             value));
-    
+
     Statement wrapperStmt;
-    
+
     if (next == null) {
       wrapperStmt = new Statement() {
         @Override

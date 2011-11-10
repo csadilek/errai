@@ -18,7 +18,7 @@ package org.jboss.errai.codegen.framework.tests;
 
 /**
  * Expected test results for the {@link LoopBuilderTest}
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public interface LoopBuilderTestResult {

@@ -37,12 +37,12 @@ import org.jboss.errai.codegen.framework.literal.ShortValue;
 
 /**
  * StatementBuilder to generate switch blocks.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class SwitchBlockBuilderImpl extends AbstractStatementBuilder implements SwitchBlockBuilder,
     ContextualSwitchBlockBuilder, CaseBlockBuilder {
-  
+
   private SwitchBlock switchBlock;
 
   protected SwitchBlockBuilderImpl(Context context, CallElementBuilder callElementBuilder) {
@@ -53,7 +53,7 @@ public class SwitchBlockBuilderImpl extends AbstractStatementBuilder implements 
   public CaseBlockBuilder switch_() {
     return switch_(new SwitchBlock());
   }
-  
+
   @Override
   public CaseBlockBuilder switch_(Statement statement) {
     return switch_(new SwitchBlock(statement));
@@ -75,7 +75,7 @@ public class SwitchBlockBuilderImpl extends AbstractStatementBuilder implements 
 
     return this;
   }
-  
+
   @Override
   public BlockBuilder<CaseBlockBuilder> case_(IntValue value) {
     switchBlock.addCase(value);
@@ -93,7 +93,7 @@ public class SwitchBlockBuilderImpl extends AbstractStatementBuilder implements 
     switchBlock.addCase(value);
     return caseBlock(value);
   }
-  
+
   @Override
   public BlockBuilder<CaseBlockBuilder> case_(char value) {
     CharValue val = (CharValue) LiteralFactory.getLiteral(value);
@@ -105,7 +105,7 @@ public class SwitchBlockBuilderImpl extends AbstractStatementBuilder implements 
     switchBlock.addCase(value);
     return caseBlock(value);
   }
-  
+
   @Override
   public BlockBuilder<CaseBlockBuilder> case_(byte value) {
     ByteValue val = (ByteValue) LiteralFactory.getLiteral(value);
@@ -135,7 +135,7 @@ public class SwitchBlockBuilderImpl extends AbstractStatementBuilder implements 
     LiteralValue<Enum<?>> val = (LiteralValue<Enum<?>>) LiteralFactory.getLiteral(value);
     return case_(val);
   }
-  
+
   private BlockBuilder<CaseBlockBuilder> caseBlock(LiteralValue<?> value) {
     return new BlockBuilderImpl<CaseBlockBuilder>(switchBlock.getCaseBlock(value),
         new BuildCallback<CaseBlockBuilder>() {

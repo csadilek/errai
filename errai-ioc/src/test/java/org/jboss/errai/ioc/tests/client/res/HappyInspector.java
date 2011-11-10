@@ -18,7 +18,7 @@ public class HappyInspector {
 
   @Inject
   private GenericService<String> stringService;
-  
+
   @Inject
   private GenericServiceClassForLong longService;
 
@@ -38,7 +38,7 @@ public class HappyInspector {
   public GenericService<String> getStringService() {
     return stringService;
   }
-  
+
   public GenericServiceClassForLong getLongService() {
     return longService;
   }

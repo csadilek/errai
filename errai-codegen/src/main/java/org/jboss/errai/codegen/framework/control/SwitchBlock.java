@@ -122,7 +122,7 @@ public class SwitchBlock extends AbstractStatement {
       }
     }
     if (!validType)
-      throw new InvalidTypeException("Type not permitted in switch statements:" + 
+      throw new InvalidTypeException("Type not permitted in switch statements:" +
           switchExprStmt.getType().getFullyQualifiedName());
   }
 }

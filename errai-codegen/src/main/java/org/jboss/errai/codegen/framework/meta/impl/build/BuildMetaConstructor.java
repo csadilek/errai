@@ -64,7 +64,7 @@ public class BuildMetaConstructor extends MetaConstructor implements Builder {
     this.body = body;
     this.defParameters = defParameters;
   }
-  
+
   public BuildMetaConstructor(BuildMetaClass declaringClass, Statement body, Scope scope, DefParameters defParameters) {
     this.context = Context.create(declaringClass.getContext());
     this.declaringClass = declaringClass;

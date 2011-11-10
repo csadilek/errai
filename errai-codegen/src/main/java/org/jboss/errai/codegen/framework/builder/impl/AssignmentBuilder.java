@@ -25,7 +25,7 @@ import org.jboss.errai.codegen.framework.meta.MetaClass;
 
 /**
  * {@link StatementBuilder} that generates {@link VariableReference} assignments.
- * 
+ *
  * @author Mike Brock <cbrock@redhat.com>
  * @author Christian Sadilek <csadilek@redhat.com>
  */
@@ -53,7 +53,7 @@ public class AssignmentBuilder implements Statement {
         if (!referenceType.isArray())
           throw new InvalidTypeException("Variable is not a " + indexes.length + "-dimensional array!");
         referenceType = referenceType.getComponentType();
-      } 
+      }
     }
     operator.assertCanBeApplied(referenceType);
     operator.assertCanBeApplied(statement.getType());
@@ -64,7 +64,7 @@ public class AssignmentBuilder implements Statement {
 
   private String generateIndexes(Context context, Statement[] indexes) {
     if (indexes==null || indexes.length == 0) return "";
-   
+
     StringBuilder buf = new StringBuilder();
     for (Statement index : indexes) {
       buf.append("[").append(index.generate(context)).append("]");

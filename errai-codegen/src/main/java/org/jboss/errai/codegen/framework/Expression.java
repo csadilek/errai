@@ -17,24 +17,24 @@
 package org.jboss.errai.codegen.framework;
 
 /**
- * Represents an expression. The LHS can either be a {@link Statement} 
+ * Represents an expression. The LHS can either be a {@link Statement}
  * or the generated {@link String} thereof.
- * 
+ *
  * @param <T> the type of operator to be used for the expression.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public interface Expression<T extends Operator> extends Statement {
-  
+
   public Statement getLhs();
   public void setLhs(Statement lhs);
-  
+
   public String getLhsExpr();
   public void setLhsExpr(String lhsExpr);
-  
+
   public Statement getRhs();
   public void setRhs(Statement rhs);
-  
+
   public T getOperator();
   public void setOperator(T operator);
 }

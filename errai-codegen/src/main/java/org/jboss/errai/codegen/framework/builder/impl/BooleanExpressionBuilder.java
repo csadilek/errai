@@ -45,7 +45,7 @@ public class BooleanExpressionBuilder extends ExpressionBuilder<BooleanOperator>
   public BooleanExpressionBuilder(Object lhs, Object rhs, BooleanOperator operator) {
     super(lhs, rhs, operator);
   }
-  
+
   public static BooleanExpression create(Statement lhs) {
     return new BooleanExpressionBuilder(lhs, null, null);
   }
@@ -70,7 +70,7 @@ public class BooleanExpressionBuilder extends ExpressionBuilder<BooleanOperator>
     if (negated) {
       return UnaryOperator.Complement.getCanonicalString()  + "(" + expr + ")";
     }
-    
+
     return expr;
   }
 

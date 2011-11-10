@@ -24,7 +24,7 @@ import org.jboss.errai.codegen.framework.Context;
 public class BreakStatement extends AbstractBranchStatement {
 
   public BreakStatement() {}
-  
+
   public BreakStatement(String label) {
     super(label);
   }
@@ -32,5 +32,5 @@ public class BreakStatement extends AbstractBranchStatement {
   @Override
   public String generate(Context context) {
     return "break" + generateLabelReference(context);
-  }  
+  }
 }

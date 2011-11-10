@@ -277,7 +277,7 @@ public class DefaultJavaMappingStrategy implements MappingStrategy {
                     Stmt.if_(Bool.and(
                             Bool.expr(loadVariable("obj").invoke("containsKey", field.getName())),
                             Bool.isNull(loadVariable("obj").invoke("get", field.getName()).invoke("isNull"))
-                            
+
                     ))
                             .append(bindingStatement).finish());
           }
@@ -591,7 +591,7 @@ public class DefaultJavaMappingStrategy implements MappingStrategy {
       sb.append(",\"" + SerializationParts.INSTANTIATE_ONLY + "\":true");
     }
 
-    
+
     sb.append("}");
 
     builder.append(Stmt.nestedCall(sb).invoke("toString").returnValue());

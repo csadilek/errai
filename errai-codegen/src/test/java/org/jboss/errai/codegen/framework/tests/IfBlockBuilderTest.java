@@ -36,7 +36,7 @@ import org.junit.Test;
 
 /**
  * Tests the generation of if blocks using the {@link StatementBuilder} API.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class IfBlockBuilderTest extends AbstractStatementBuilderTest implements IfBlockBuilderTestResult {
@@ -317,11 +317,11 @@ public class IfBlockBuilderTest extends AbstractStatementBuilderTest implements 
 
     String s = Stmt.create(ctx)
         .if_(Bool.expr(
-              Bool.expr("foo", BooleanOperator.Equals, "bar"), 
+              Bool.expr("foo", BooleanOperator.Equals, "bar"),
               BooleanOperator.Or,
               Bool.expr(
-                  Bool.expr("cat", BooleanOperator.Equals, "dog"), 
-                  BooleanOperator.And, 
+                  Bool.expr("cat", BooleanOperator.Equals, "dog"),
+                  BooleanOperator.And,
                   Bool.expr("girl", BooleanOperator.NotEquals, "boy"))))
         .finish()
         .elseif_(Bool.expr(Stmt.loadVariable("a"), BooleanOperator.And, Stmt.loadVariable("b")))

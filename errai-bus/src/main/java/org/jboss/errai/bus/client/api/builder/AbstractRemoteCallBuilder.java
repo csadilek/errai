@@ -64,7 +64,7 @@ public class AbstractRemoteCallBuilder {
       else
         return call(callback, errorCallback, remoteService);
     }
-    
+
     ((RPCStub) svc).setRemoteCallback(callback);
     ((RPCStub) svc).setErrorCallback(errorCallback);
     return svc;
@@ -83,11 +83,11 @@ public class AbstractRemoteCallBuilder {
     message.toSubject(serviceName + ":RPC");
 
     final RemoteCallSendable sendable = new RemoteCallSendable() {
-      
+
       public void sendNowWith(final MessageBus bus) {
         Integer id = null;
         if (remoteCallback != null) {
-          final String replyTo = message.getSubject() + "." + message.getCommandType() + 
+          final String replyTo = message.getSubject() + "." + message.getCommandType() +
             ":RespondTo:" + (id = uniqueNumber());
 
           if (remoteCallback != null) {
@@ -103,11 +103,11 @@ public class AbstractRemoteCallBuilder {
             message.set(MessageParts.ReplyTo, replyTo);
           }
         }
-        
+
         if (message.getErrorCallback() != null) {
-          final String errorTo = message.getSubject() + "." + message.getCommandType() + 
+          final String errorTo = message.getSubject() + "." + message.getCommandType() +
             ":Errors:" + ((id == null) ? uniqueNumber() : id);
-          
+
             bus.subscribe(errorTo,
               new MessageCallback() {
                 @SuppressWarnings({"unchecked"})
@@ -119,7 +119,7 @@ public class AbstractRemoteCallBuilder {
             );
           message.set(MessageParts.ErrorTo, errorTo);
         }
-        
+
         message.sendNowWith(bus);
       }
     };

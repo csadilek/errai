@@ -141,7 +141,7 @@ public class ClientMessageBusImpl implements ClientMessageBus {
    * IMPORTANT: only access this member via {@link #getNextRequestNumber()}.
    */
   private int requestNumber = 0;
-  
+
   private boolean disconnected = false;
 
   ProxySettings proxySettings;
@@ -204,7 +204,7 @@ public class ClientMessageBusImpl implements ClientMessageBus {
             RequestBuilder.GET,
             URL.encode(endpoint) + "?z=" + getNextRequestNumber()
     );
-    
+
     builder.setHeader("Content-Type", "application/json");
     builder.setHeader(ClientMessageBus.REMOTE_QUEUE_ID_HEADER, clientId);
     return builder;
@@ -1367,7 +1367,7 @@ public class ClientMessageBusImpl implements ClientMessageBus {
       }
     }
   }
-  
+
   public int getNextRequestNumber() {
     if (requestNumber == Integer.MAX_VALUE) {
       requestNumber = 0;

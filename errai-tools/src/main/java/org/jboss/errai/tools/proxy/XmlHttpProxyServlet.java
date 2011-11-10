@@ -184,7 +184,7 @@ public class XmlHttpProxyServlet extends HttpServlet {
     InputStream is = null;
     try {
       /*URL url = ctx.getResource(configResource);
-      // use classpath if not found locally.      
+      // use classpath if not found locally.
       if (url == null) url = XmlHttpProxyServlet.class.getResource(configResource);  // same package*/
 
       // use classpath if not found locally.

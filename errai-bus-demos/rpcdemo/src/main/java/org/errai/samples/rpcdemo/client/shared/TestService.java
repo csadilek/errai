@@ -34,7 +34,7 @@ public interface TestService {
   List<Date> getDates();
 
   Date getDate();
-  
+
   public void exception() throws TestException;
 
 }

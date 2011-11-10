@@ -54,10 +54,10 @@ public class MarshallerGeneratorFactory {
   Set<String> arrayMarshallers = new HashSet<String>();
 
   long startTime;
-  
+
   public String generate(String packageName, String clazzName) {
     startTime = System.currentTimeMillis();
-    
+
     classStructureBuilder = implement(MarshallerFactory.class, packageName, clazzName);
 
     classContext = ((BuildMetaClass) classStructureBuilder.getClassDefinition()).getContext();

@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * <p>
  * This annotation supersedes and has the same meaning as the older
  * {@link ExposeEntity} annotation.
- * 
+ *
  * @since Errai 2.0
  * @author Mike Brock <cbrock@redhat.com>
  */

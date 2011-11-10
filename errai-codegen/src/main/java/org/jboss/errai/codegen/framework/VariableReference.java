@@ -18,7 +18,7 @@ package org.jboss.errai.codegen.framework;
 
 /**
  * {@link Statement} thats represents a reference to a {@link Variable}.
- * 
+ *
  * @author Mike Brock <cbrock@redhat.com>
  * @author Christian Sadilek <csadilek@redhat.com>
  */
@@ -36,7 +36,7 @@ public abstract class VariableReference extends AbstractStatement {
   public Statement[] getIndexes() {
     return indexes;
   }
-  
+
   public void setIndexes(Statement[] indexes) {
     this.indexes = indexes;
   }

@@ -41,7 +41,7 @@ public class LoadField extends AbstractCallElement {
     if (fieldName.equals("this")) {
       // TODO this is a workaround to access the enclosing instance of a type
       field = new BuildMetaField(null, null, Scope.Private, statement.getType(), "this");
-    } 
+    }
     else {
       field = statement.getType().getField(fieldName);
     }

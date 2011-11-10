@@ -176,7 +176,7 @@ public class IOCProcessorFactory {
           if (iter.next().processAllDelegates()) {
             iter.remove();
           }
-        } 
+        }
         catch (InjectionFailure f) {
           // We are ignoring this Exception and keep retrying. The problem should go away after
           // all the other dependencies have been processed.

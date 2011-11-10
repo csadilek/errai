@@ -35,7 +35,7 @@ import org.junit.Test;
 
 /**
  * Tests the {@link ClassBuilder} API.
- * 
+ *
  * @author Mike Brock <cbrock@redhat.com>
  * @author Christian Sadilek <csadilek@redhat.com>
  */

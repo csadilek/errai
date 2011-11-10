@@ -42,7 +42,7 @@ import org.junit.Test;
 
 /**
  * Tests the generation of loops using the {@link StatementBuilder} API.
- * 
+ *
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 public class LoopBuilderTest extends AbstractStatementBuilderTest implements LoopBuilderTestResult {
