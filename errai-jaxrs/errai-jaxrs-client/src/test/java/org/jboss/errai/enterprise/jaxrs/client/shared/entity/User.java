@@ -18,7 +18,9 @@ package org.jboss.errai.enterprise.jaxrs.client.shared.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jboss.errai.common.client.api.annotations.Portable;
 
@@ -45,6 +47,9 @@ public class User {
   private List<String> petNames = new ArrayList<String>();
   private List<User> friends = new ArrayList<User>();
   private List<Integer> favoriteNumbers = new ArrayList<Integer>();
+
+  private Map<Integer, String> friendsMap = new HashMap<Integer, String>();
+
   private Integer age;
   private boolean alive = true;
   private Date date;
@@ -161,6 +166,14 @@ public class User {
     return date;
   }
 
+  public Map<Integer, String> getFriendsMap() {
+    return friendsMap;
+  }
+
+  public void setFriendsMap(Map<Integer, String> friendsMap) {
+    this.friendsMap = friendsMap;
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -171,6 +184,7 @@ public class User {
     result = prime * result + ((favoriteNumbers == null) ? 0 : favoriteNumbers.hashCode());
     result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
     result = prime * result + ((friends == null) ? 0 : friends.hashCode());
+    result = prime * result + ((friendsMap == null) ? 0 : friendsMap.hashCode());
     result = prime * result + ((gender == null) ? 0 : gender.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -221,6 +235,13 @@ public class User {
     }
     else if (!friends.equals(other.friends))
       return false;
+
+    if (friendsMap == null) {
+      if (other.friendsMap != null)
+        return false;
+    }
+    else if (!friendsMap.equals(other.friendsMap))
+      return false;
     if (gender != other.gender)
       return false;
     if (id == null) {
@@ -260,7 +281,8 @@ public class User {
   public String toString() {
     return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
         + ", parent=" + parent + ", parentRef=" + parentRef + ", petNames=" + petNames + ", friends=" + friends
-        + ", favoriteNumbers=" + favoriteNumbers + ", age=" + age + ", alive=" + alive + ", date=" + date + "]";
+        + ", favoriteNumbers=" + favoriteNumbers + ", friendsNameMap=" + friendsMap + ", friendsMap=" + friendsMap
+        + ", age=" + age + ", alive=" + alive + ", date=" + date + "]";
   }
 
 }

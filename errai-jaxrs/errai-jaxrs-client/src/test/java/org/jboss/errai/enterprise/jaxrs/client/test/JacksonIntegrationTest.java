@@ -18,6 +18,7 @@ package org.jboss.errai.enterprise.jaxrs.client.test;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import org.jboss.errai.bus.client.api.RemoteCallback;
@@ -55,6 +56,11 @@ public class JacksonIntegrationTest extends AbstractErraiJaxrsTest {
 
     final User user =
         new User(11l, "first", "last", 20, Gender.MALE, new User(12l, "first2", "last2", 40, Gender.FEMALE, null));
+    final User friend1 = 
+      new User(13l, "friend1-first", "friend1-last", 1, Gender.MALE, null);
+    final User friend2 = 
+      new User(14l, "friend2-first", "friend2-last", 2, Gender.FEMALE, null);
+    
     user.setPetNames(new ArrayList<String>() {
       {
         add("pet1");
@@ -63,8 +69,14 @@ public class JacksonIntegrationTest extends AbstractErraiJaxrsTest {
     });
     user.setFriends(new ArrayList<User>() {
       {
-        add(new User(13l, "friend1-first", "friend1-last", 1, Gender.MALE, null));
-        add(new User(14l, "friend2-first", "friend2-last", 2, Gender.FEMALE, null));
+        add(friend1);
+        add(friend2);
+      }
+    });
+    user.setFriendsMap(new HashMap<Integer, String>() {
+      {
+        put(13, "friend1-first");
+        put(14, "friend2-frist");
       }
     });
 
@@ -75,7 +87,23 @@ public class JacksonIntegrationTest extends AbstractErraiJaxrsTest {
           @Override
           public void callback(String jackson) {
             assertNotNull("Server failed to parse JSON using Jackson", jackson);
-            assertEquals(user, MarshallingWrapper.fromJSON(jackson, User.class));
+            User returnedUser = MarshallingWrapper.fromJSON(jackson, User.class);
+            
+            for (Object key : returnedUser.getFriendsMap().keySet()) {
+              System.out.println(key);
+              System.out.println(key.getClass());
+              System.out.println(returnedUser.getFriendsMap().get(key));
+              System.out.println(returnedUser.getFriendsMap().get(key).getClass());
+            }
+            
+            for (Integer key : user.getFriendsMap().keySet()) {
+              System.out.println(key);
+              System.out.println(key.getClass());
+              System.out.println(user.getFriendsMap().get(key));
+              System.out.println(user.getFriendsMap().get(key).getClass());
+            }
+            
+            assertEquals(user, returnedUser);
             finishTest();
           }
         }).postJackson(jackson);
@@ -101,7 +129,7 @@ public class JacksonIntegrationTest extends AbstractErraiJaxrsTest {
           }
         }).postJacksonList(jackson);
   }
-  
+
   @Test
   public void testJacksonMarshallingOfCollection() {
     delayTestFinish(5000);
@@ -143,7 +171,7 @@ public class JacksonIntegrationTest extends AbstractErraiJaxrsTest {
           }
         }).postJacksonListOfBytes(jackson);
   }
-  
+
   @Test
   @SuppressWarnings("serial")
   public void testJacksonMarshallingOfPortableWithByteArray() {
@@ -162,5 +190,5 @@ public class JacksonIntegrationTest extends AbstractErraiJaxrsTest {
           }
         }).postJacksonPortableWithByteArray(jackson);
   }
-  
+
 }

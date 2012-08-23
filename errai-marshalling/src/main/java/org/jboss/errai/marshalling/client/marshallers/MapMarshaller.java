@@ -30,7 +30,6 @@ import org.jboss.errai.marshalling.client.api.annotations.AlwaysQualify;
 import org.jboss.errai.marshalling.client.api.annotations.ClientMarshaller;
 import org.jboss.errai.marshalling.client.api.annotations.ImplementationAliases;
 import org.jboss.errai.marshalling.client.api.annotations.ServerMarshaller;
-import org.jboss.errai.marshalling.client.api.json.EJObject;
 import org.jboss.errai.marshalling.client.api.json.EJValue;
 import org.jboss.errai.marshalling.client.util.MarshallUtil;
 import org.jboss.errai.marshalling.client.util.SimpleTypeLiteral;
@@ -64,6 +63,9 @@ public class MapMarshaller<T extends Map<Object, Object>> implements Marshaller<
   }
 
   protected T doDemarshall(final T impl, final EJValue o, final MarshallingSession ctx) {
+    if (o.isObject() == null) 
+      return impl;
+    
     Object demarshalledKey;
     for (final String key : o.isObject().keySet()) {
       if (key.startsWith(SerializationParts.EMBEDDED_JSON)) {
@@ -71,6 +73,9 @@ public class MapMarshaller<T extends Map<Object, Object>> implements Marshaller<
         demarshalledKey = ctx.getMarshallerInstance(ctx.determineTypeFor(null, val)).demarshall(val, ctx);
       }
       else {
+        if (key.equals(SerializationParts.OBJECT_ID)) {
+          continue;
+        }
         demarshalledKey = key;
       }
 
