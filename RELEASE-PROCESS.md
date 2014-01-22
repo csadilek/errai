@@ -25,10 +25,8 @@ Release Steps
 
         % mvn -Pintegration-test test
    
-1. Update reference guide with latest content in confluence
+1. Update reference guide with latest content
    (Note that this automatically downloads the latest docs and adds `language` attributes to all the `programlisting` elements.
-   You need to have a file `jboss-credentials.properties` in the `reference` directory with your JBoss Community username and
-   password under the keys `jboss.username` and `jboss.password` respectively.)
       ```
          % cd reference
          % mvn package   # this needs a profile in ~/.m2/settings.xml that references the JBoss public maven repo
