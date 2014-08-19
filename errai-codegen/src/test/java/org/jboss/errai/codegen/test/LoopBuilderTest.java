@@ -37,7 +37,9 @@ import org.jboss.errai.codegen.exception.InvalidExpressionException;
 import org.jboss.errai.codegen.exception.InvalidTypeException;
 import org.jboss.errai.codegen.exception.OutOfScopeException;
 import org.jboss.errai.codegen.exception.TypeNotIterableException;
+import org.jboss.errai.codegen.meta.MetaClassFactory;
 import org.jboss.errai.codegen.util.Bool;
+import org.jboss.errai.codegen.util.Refs;
 import org.jboss.errai.codegen.util.Stmt;
 import org.junit.Test;
 
@@ -566,4 +568,28 @@ public class LoopBuilderTest extends AbstractCodegenTest {
       // expected
     }
   }
+  
+  public class Person<T> {
+    public List<String> getNames() {
+      return null;
+    }
+  }
+  
+  @Test
+  public void testSimpleForEachWithPrint() {
+     String target = "for (String name : p.getNames()) {\nSystem.out.println(name);\n}";
+     
+     String javaString = Stmt
+       .declareVariable("p", Person.class)
+       .loadVariable("p")
+       .invoke("getNames")
+       .foreach("name", String.class)
+       .append(Stmt.loadStatic(System.class, "out").invoke("println", Refs.get("name")))
+       .finish()
+       .toJavaString();
+
+     assertEquals(target, javaString);
+  }
+
+  
 }

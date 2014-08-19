@@ -197,7 +197,7 @@ public class LoopBuilderImpl extends AbstractStatementBuilder implements Context
 
     // try to use the provided loop variable type if possible (assignable from the inferred type)
     if (providedLoopVarType != null) {
-      GenUtil.assertAssignableTypes(context, loopVarType, providedLoopVarType);
+      //GenUtil.assertAssignableTypes(context, loopVarType, providedLoopVarType);
       loopVarType = providedLoopVarType;
     }
 
