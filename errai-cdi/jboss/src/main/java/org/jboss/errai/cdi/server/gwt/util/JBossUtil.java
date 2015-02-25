@@ -5,8 +5,14 @@ import java.io.File;
 import com.google.gwt.core.ext.TreeLogger.Type;
 import com.google.gwt.core.ext.UnableToCompleteException;
 
+/**
+ * Utility methods to bootstrap various JBoss/WildFly containers for DevMode.
+ * 
+ * @author Christian Sadilek <csadilek@redhat.com>
+ */
 public class JBossUtil {
-  public static final String JBOSS_HOME_PROPERTY = "errai.jboss.home";
+  private static final String APP_CONTEXT_PROPERTY = "errai.dev.context";
+  private static final String JBOSS_HOME_PROPERTY = "errai.jboss.home";
   public static final String STANDALONE_CONFIGURATION = "standalone" + File.separator + "configuration";
   
   
@@ -60,6 +66,10 @@ public class JBossUtil {
             : "standalone.sh";
 
     return String.format("%s%cbin%c%s", jbossHome, File.separatorChar, File.separatorChar, script);
+  }
+  
+  public static String getDeploymentContext() {
+    return System.getProperty(APP_CONTEXT_PROPERTY, "webapp");
   }
  
 }
