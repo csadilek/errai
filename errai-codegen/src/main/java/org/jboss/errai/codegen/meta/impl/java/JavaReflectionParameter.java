@@ -17,6 +17,7 @@
 package org.jboss.errai.codegen.meta.impl.java;
 
 import java.lang.annotation.Annotation;
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.jboss.errai.codegen.meta.MetaClass;
@@ -61,12 +62,11 @@ public class JavaReflectionParameter extends MetaParameter {
     return annotations == null ? new Annotation[0] : annotations;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public final <A extends Annotation> A getAnnotation(final Class<A> annotation) {
-    for (final Annotation a : getAnnotations()) {
-      if (a.annotationType().equals(annotation)) return (A) a;
-    }
-    return null;
+    return (A) Arrays.stream(getAnnotations())
+            .filter(a -> a.annotationType().equals(annotation)).findFirst().orElse(null);
   }
 
   @Override

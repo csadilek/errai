@@ -17,6 +17,7 @@
 package org.jboss.errai.codegen.meta.impl;
 
 import java.lang.annotation.Annotation;
+import java.util.Arrays;
 
 import org.jboss.errai.codegen.meta.MetaClassMember;
 
@@ -26,11 +27,10 @@ import org.jboss.errai.codegen.meta.MetaClassMember;
 public abstract class AbstractMetaMember implements MetaClassMember {
   protected Annotation[] annotations;
 
+  @SuppressWarnings("unchecked")
   @Override
   public final <A extends Annotation> A getAnnotation(Class<A> annotation) {
-    for (Annotation a : getAnnotations()) {
-      if (a.annotationType().equals(annotation)) return (A) a;
-    }
-    return null;
+    return (A) Arrays.stream(getAnnotations())
+            .filter(a -> a.annotationType().equals(annotation)).findFirst().orElse(null);
   }
 }

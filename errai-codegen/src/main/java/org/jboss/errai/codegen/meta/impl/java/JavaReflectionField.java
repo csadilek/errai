@@ -19,6 +19,7 @@ package org.jboss.errai.codegen.meta.impl.java;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Arrays;
 
 import org.jboss.errai.codegen.meta.MetaClass;
 import org.jboss.errai.codegen.meta.MetaClassFactory;
@@ -55,10 +56,8 @@ public class JavaReflectionField extends MetaField {
   @SuppressWarnings("unchecked")
   @Override
   public final <A extends Annotation> A getAnnotation(final Class<A> annotation) {
-    for (final Annotation a : getAnnotations()) {
-      if (a.annotationType().equals(annotation)) return (A) a;
-    }
-    return null;
+    return (A) Arrays.stream(getAnnotations())
+            .filter(a -> a.annotationType().equals(annotation)).findFirst().orElse(null);
   }
 
   @Override
