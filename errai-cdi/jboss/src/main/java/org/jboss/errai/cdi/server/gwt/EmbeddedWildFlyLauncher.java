@@ -16,7 +16,9 @@
 
 package org.jboss.errai.cdi.server.gwt;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.BindException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -89,17 +91,30 @@ public class EmbeddedWildFlyLauncher extends ServletContainerLauncher {
 
       final String jbossHome = JBossUtil.getJBossHome(logger);
       final String[] cmdArgs = JBossUtil.getCommandArguments(logger);
-      final StandaloneServer embeddedWildFly = EmbeddedServerFactory.create(jbossHome, null, null, new String[0], cmdArgs);
+      final StandaloneServer embeddedWildFly = EmbeddedServerFactory.create(jbossHome, 
+              null,
+              null,
+              // This is a temporary workaround until
+              // https://gwt-review.googlesource.com/#/c/14461 is merged.
+              // When upgrading Jetty to 9.2 (see
+              // https://gwt-review.googlesource.com/#/c/7857/), Jetty's
+              // WebSocketServerContainerInitializer was bundled in gwt-dev.jar.
+              // WildFly will discover this type, try to run it and fail on startup.
+              // Here we make sure it can load the required classes.
+              new String[] { "javax.servlet", "javax.websocket", "javax.websocket.server",
+                  "org.eclipse.jetty.websocket.jsr356.server.deploy" },
+              cmdArgs);
+      
       embeddedWildFly.start();
 
       prepareBeansXml(appRootDir);
       prepareUsersAndRoles(jbossHome);
-      JBossServletContainerAdaptor controller = new JBossServletContainerAdaptor(port, appRootDir,
+      final JBossServletContainerAdaptor controller = new JBossServletContainerAdaptor(port, appRootDir,
               JBossUtil.getDeploymentContext(), logger.peek(), null);
 
       return controller;
     }
-    catch (UnableToCompleteException e) {
+    catch (final UnableToCompleteException e) {
       logger.log(Type.ERROR, "Could not start servlet container controller", e);
       throw new UnableToCompleteException();
     }
@@ -112,14 +127,14 @@ public class EmbeddedWildFlyLauncher extends ServletContainerLauncher {
    * roles for development mode.
    */
   private void prepareUsersAndRoles(final String jbossHome) {
-    InputStream usersStream =
+    final InputStream usersStream =
             Thread.currentThread().getContextClassLoader().getResourceAsStream(JBossUtil.USERS_PROPERTY_FILE);
 
     if (usersStream != null) {
       processPropertiesFile(JBossUtil.USERS_PROPERTY_FILE, jbossHome, usersStream, true);
     }
 
-    InputStream rolesStream =
+    final InputStream rolesStream =
             Thread.currentThread().getContextClassLoader().getResourceAsStream(JBossUtil.ROLES_PROPERTY_FILE);
 
     if (rolesStream != null) {
@@ -137,11 +152,11 @@ public class EmbeddedWildFlyLauncher extends ServletContainerLauncher {
       String realmToken = ERRAI_PROPERTIES_REALM_TOKEN;
       boolean isErraiContent = false;
       final StringBuilder result = new StringBuilder();
-      List<String> lines = FileUtils.readLines(propertyFile);
+      final List<String> lines = FileUtils.readLines(propertyFile);
       if (lines != null) {
 
         for (final String currentLine : lines) {
-          String trimmed = currentLine.trim();
+          final String trimmed = currentLine.trim();
           if(trimmed.startsWith(ERRAI_PROPERTIES_HINT_START.trim())) {
             isErraiContent = true;
           } else if(trimmed.startsWith(ERRAI_PROPERTIES_HINT_END.trim())) {
@@ -164,13 +179,13 @@ public class EmbeddedWildFlyLauncher extends ServletContainerLauncher {
 
         try {
           FileUtils.write(propertyFile, result.toString());
-        } catch (IOException e) {
+        } catch (final IOException e) {
           throw new RuntimeException("Failed to write content for " +
                   propertyFileName + " in " + propertyFile.getAbsolutePath(), e);
         }
       }
 
-    } catch (IOException e) {
+    } catch (final IOException e) {
       throw new RuntimeException("Failed to parse content for " +
               propertyFileName + " in " + propertyFile.getAbsolutePath(), e);
     }
@@ -190,15 +205,15 @@ public class EmbeddedWildFlyLauncher extends ServletContainerLauncher {
    * @throws IOException
    */
   private void prepareBeansXml(File appRootDir) throws IOException {
-    File webInfDir = new File(appRootDir, "WEB-INF");
-    File classesDir = new File(webInfDir, "classes");
+    final File webInfDir = new File(appRootDir, "WEB-INF");
+    final File classesDir = new File(webInfDir, "classes");
 
-    StringBuilder exclusions = new StringBuilder();
+    final StringBuilder exclusions = new StringBuilder();
     exclusions.append(ERRAI_SCANNER_HINT_START);
-    for (File clientLocalClass : FileUtils.listFiles(appRootDir, new ClientLocalFileFilter(), TrueFileFilter.INSTANCE)) {
+    for (final File clientLocalClass : FileUtils.listFiles(appRootDir, new ClientLocalFileFilter(), TrueFileFilter.INSTANCE)) {
       final String className = clientLocalClass.getAbsolutePath();
       if (className.endsWith(".class")) {
-        String exclusion = className
+        final String exclusion = className
           .replace(classesDir.getAbsolutePath(), "")
           .replace(".class", "")
           .replace(File.separator, ".")
@@ -208,7 +223,7 @@ public class EmbeddedWildFlyLauncher extends ServletContainerLauncher {
     }
     exclusions.append(ERRAI_SCANNER_HINT_END);
 
-    File beansXml = new File(webInfDir, "beans.xml");
+    final File beansXml = new File(webInfDir, "beans.xml");
     String beansXmlContent;
     if (!beansXml.exists()) {
       beansXmlContent = DEVMODE_BEANS_XML_TEMPLATE.replace("$EXCLUSIONS", exclusions.toString());
@@ -238,7 +253,7 @@ public class EmbeddedWildFlyLauncher extends ServletContainerLauncher {
   }
 
   private String removeExistingErraiExclusions(String beansXmlContent) {
-    String oldExclusions = StringUtils.substringBetween(beansXmlContent,
+    final String oldExclusions = StringUtils.substringBetween(beansXmlContent,
             ERRAI_SCANNER_HINT_START, ERRAI_SCANNER_HINT_END);
 
     beansXmlContent = beansXmlContent.replace(ERRAI_SCANNER_HINT_START, "");
@@ -263,7 +278,7 @@ public class EmbeddedWildFlyLauncher extends ServletContainerLauncher {
 
     @Override
     public boolean accept(File dir, String file) {
-      String fullName = dir.getAbsolutePath() + File.separator + file;
+      final String fullName = dir.getAbsolutePath() + File.separator + file;
       return accept(fullName);
     }
 
